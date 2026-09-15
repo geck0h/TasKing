@@ -1,3 +1,3 @@
 # TasKing
 
-A daily task managin application.
+A daily task managing application.
