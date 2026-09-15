@@ -1,0 +1,132 @@
+#dailies {
+    height: auto;
+    padding-left: 20rem;
+    padding-right: 20rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.task-day {
+    display: inline;
+}
+
+.task-day > div {
+    width: 10rem;
+    height: auto;
+    background-color: rgb(43, 43, 85);
+    margin: 3rem;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    box-shadow: 0 0 1rem 0.7rem rgb(43, 43, 85);
+    transition: all 300ms ease;
+}
+
+.task-day:hover > div {
+    box-shadow: 0 0 1rem 0.7rem rgb(71, 71, 134);
+    background-color: rgb(71, 71, 134);
+}
+
+.task-day > div div {
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+#dailies p {
+    font-family: "Adwaita", serif;
+    color: white;
+}
+
+#dailies h3 {
+    font-family: "AdwaitaMono", monospace;
+    font-size: 3rem;
+    color: whitesmoke;
+    position: relative;
+    text-align: center;
+    top: 4rem;
+    user-select: none;
+}
+
+#dailies {
+    background-color: rgb(36, 36, 48);
+    height: auto;
+    margin: 0 1rem 0 1rem;
+    padding-left: 20rem;
+    padding-right: 20rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.task-input {
+    margin-left: 3.25rem;
+    position: relative;
+    top: -5rem;
+    border-style: none;
+    background-color: white;
+    color: rgb(35, 34, 34);
+    border-radius: var(--input-border-radius);
+    padding: var(--input-padding);
+}
+
+.task-input:focus {
+    outline: none;
+}
+
+.task textarea {  
+    color: white;
+    background: transparent;
+    border: none;
+    overflow: hidden;
+}
+
+.task textarea:focus {
+    border-style: none;
+    outline: none;
+}
+
+.task {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.task button {
+    font-family: 'Adwaita', serif;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    padding: var(--input-padding);
+    border-radius: var(--input-border-radius);
+    border: none;
+    background-color: rgb(165, 157, 197);
+    transform: translate(-100%, -50%);
+    opacity: 0;
+    transition: 
+      transform 0.3s ease, 
+      opacity 0.3s ease;
+}
+
+.task:hover button {
+    transform: translate(-130%, -50%);
+    opacity: 1;
+}
+
+.status {
+    width: 2rem;
+    height: 2rem;
+}
+
+.task img {
+    margin-left: auto;
+}
+
+.task p, .task img {
+    display: inline;
+    position: relative;
+}

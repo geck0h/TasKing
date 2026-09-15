@@ -1,0 +1,138 @@
+@import url(global.css);
+
+#stats {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.stat {
+    padding: 1rem;
+    width: 18rem;
+    height: 40rem;
+    margin: 0;
+    border: 0;
+}
+
+.stat h1 {
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-family: 'AdwaitaMono', monospace;
+    color: white;
+}
+
+.stat ul {
+    list-style: none;
+    font-family: 'Adwaita', serif;
+    font-size: medium;
+    padding-bottom: 1rem;
+}
+
+.stat li {
+    padding-bottom: 0.2rem;
+}
+.stat div {
+    display: inline-block;
+    width: 14rem;
+}
+
+.stat .stat-score {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 3rem;
+    height: 50%;
+    float: right;
+    border-radius: 1rem;
+    gap: 0.2rem;
+    padding: 0.2rem;
+    border: green solid;
+}
+
+.stat-score div {
+    box-sizing: border-box;
+    width: 100%;
+    height: 10%;
+    border-radius: 1rem;
+    background-color: green;
+}
+
+.stat .level-button {
+    padding: var(--input-padding);
+    border-radius: var(--input-border-radius);
+    user-select: none;
+    border: none;
+}
+
+.stat .level-button:nth-of-type(1) {
+    width: 5rem;
+    margin-right: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.stat .level-button:nth-of-type(1):hover {
+    background-color: rgb(84, 252, 140);
+}
+
+.stat .level-button:nth-of-type(2) {
+    width: 7rem;
+    transition: background-color 0.3s ease;
+}
+
+.stat .level-button:nth-of-type(2):hover {
+    background-color: rgb(255, 116, 116);
+}
+
+.stat .level-input {
+    padding: var(--input-padding);
+    border-radius: var(--input-border-radius);
+    border: none;
+    width: 12rem;
+}
+
+.stat .level-input:focus {
+    outline: none;
+}
+
+#add-stat {
+    display: inline-flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    width: 20rem;
+    height: 14rem;  
+    order: 1;
+}
+
+#add-stat h2 {
+    font-family: 'AdwaitaMono', monospace;
+    font-size: xx-large;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+#add-stat #stat-input {
+    width: 10rem;
+    border-radius: var(--input-border-radius);
+    padding: var(--input-padding);
+    border-style: none;
+    transition: box-shadow 300ms ease;
+}
+
+#add-stat #stat-input:hover {
+    box-shadow: 0 0 1rem 0.2rem rgb(172, 172, 172);
+}
+
+#stat-input:focus {
+    outline: none;  
+}
+
+#square {
+    display: block;
+    width: 20rem;
+    height: 20rem;
+    background-color: bisque;
+    position: absolute;
+    top: 20rem;
+    left: 10rem;
+}
