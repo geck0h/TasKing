@@ -6,6 +6,15 @@ const SideBar = () => (
       <Link to='/home' className={styles.links}> 
         HOME
       </Link>
+      <Link to='/home' className={styles.links}> 
+        HOME
+      </Link>
+      <Link to='/home' className={styles.links}> 
+        HOME
+      </Link>
+      <Link to='/home' className={styles.links}> 
+        HOME
+      </Link>
     </div>
   </div>
 )
@@ -21,6 +30,7 @@ const styles = {
   main: 
     `fixed top-1/2 -right-30
     flex flex-col items-center justify-start gap-5
+    pb-4 
     h-full w-50 
     border-blue-200 border-10 rounded-4xl
     bg-blue-200
@@ -33,8 +43,10 @@ const styles = {
     `flex justify-center items-center
     w-30 h-30 shrink-0
     rounded-4xl
+    shadow-solid shadow-blue-600 
     text-3xl font-bold font-sans
-    bg-blue-500`
+    bg-blue-500
+    hover:shadow-solid-pressed hover:translate-y-2`
 }
 
 export default SideBar;
