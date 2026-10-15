@@ -46,7 +46,8 @@ const styles = {
     shadow-solid shadow-blue-600 
     text-3xl font-bold font-sans
     bg-blue-500
-    hover:shadow-solid-pressed hover:translate-y-2`
+    hover:shadow-solid-pressed hover:translate-y-2
+    transition-[translate,box-shadow] duration-100 ease`
 }
 
 export default SideBar;
