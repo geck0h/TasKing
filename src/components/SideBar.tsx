@@ -6,15 +6,6 @@ const SideBar = () => (
       <Link to='/home' className={styles.links}> 
         HOME
       </Link>
-      <Link to='/home' className={styles.links}> 
-        HOME
-      </Link>
-      <Link to='/home' className={styles.links}> 
-        HOME
-      </Link>
-      <Link to='/home' className={styles.links}> 
-        HOME
-      </Link>
     </div>
   </div>
 )
@@ -38,7 +29,7 @@ const styles = {
     overflow-y-auto
     scrollbar-none
     group-hover:right-15
-    transition-[right] ease-[cubic-bezier(0.13,0.36,0.17,1.49)] duration-150 `,
+    transition-[right] ease-[cubic-bezier(0.13,0.36,0.17,1.49)] duration-150`,
   links: 
     `flex justify-center items-center
     w-30 h-30 shrink-0
