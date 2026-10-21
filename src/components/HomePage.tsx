@@ -1,35 +1,109 @@
+import { Separator } from '@base-ui/react/separator';
+import { Bar, BarChart, XAxis } from "recharts"
+import { 
+  ChartContainer, 
+  type ChartConfig, 
+  ChartLegend, 
+  ChartLegendContent 
+} from '../shadcn/components/ui/chart';
+import { cn } from 'cn';
+
+const chartConfig = {
+  bestWeek: {
+    label: 'Best Week'
+  },
+    prevWeek: {
+    label: 'Previous Week'
+  }
+} satisfies ChartConfig;
+
+const chartData = [
+  { day: "Mon", prevWeek: 186, bestWeek: 80 },
+  { day: "Tue", prevWeek: 305, bestWeek: 200 },
+  { day: "Wed", prevWeek: 237, bestWeek: 120 },
+  { day: "Thu", prevWeek: 73, bestWeek: 190 },
+  { day: "Fri", prevWeek: 209, bestWeek: 130 },
+  { day: "Sat", prevWeek: 214, bestWeek: 140 },
+  { day: "Sun", prevWeek: 254, bestWeek: 120 }
+];
+
 const HomePage = () => (
-  <div className={styles.page}>
-    <div className={styles.glowElement} />
-    {Array.from(Array(8)).map((_, idx) => (
-      <InfoField key={idx} />
-    ))}
-  </div>
-) 
-// contemplate about how the home page should look
-// probably 8 sections
-// profile picture, graph, best score, overall percentage, streak, next task, and 2 more sections
-
-const InfoField = () => {
-  return(
-    <div className='h-80 w-80 bg-white'>
-
+  <div className='flex items-center justify-center h-screen'>
+    <div className={styles.container}>
+        <div className={cn(styles.section, 'w-1/3')}>
+          <div className='flex flex-col items-center justify-evenly h-1/2'>
+            <div className='w-30 h-30 bg-amber-200 rounded-full' />
+            <span className='font-bold text-3xl'>
+              geckoh
+            </span>
+          </div>
+          <Separator 
+            orientation='horizontal' 
+            className='bg-blue-100 h-0.5' 
+          />
+          <div className='pt-5 h-1/2'>
+            <ul className={styles.statsList}>
+              <li>Current streak</li>
+              <li>Best streak</li>
+              <li>Lifetime tasks complete</li>
+              <li>Best task</li>
+              <li>Worst task</li>
+            </ul>
+          </div>
+        </div>
+        <Separator 
+          orientation='vertical' 
+          className='bg-blue-100 w-0.5' 
+        />
+        <div className={cn(styles.section, 'w-3/7')}>
+          <ChartContainer 
+            config={chartConfig}
+            className='h-full w-full'
+          >
+            <BarChart 
+              accessibilityLayer 
+              data={chartData}
+            >
+              <XAxis
+                dataKey='day'
+                tickMargin={12}
+                axisLine={false}
+              />
+              <ChartLegend content={<ChartLegendContent />} />
+              <Bar dataKey='bestWeek' fill='gold' radius={2} />
+              <Bar dataKey='prevWeek' fill='skyblue' radius={2} />
+            </BarChart>
+          </ChartContainer>
+        </div>
+        <Separator 
+          orientation='vertical' 
+          className='bg-blue-100 w-0.5' 
+        />
+        <div className={cn(styles.section, 'w-auto')}>
+          here is the right side
+        </div>
     </div>
-  )
-}
-// InfoField component will probably go in a new file
+  </div>
+);
 
 const styles = {
   page:
-  `flex justify-center items-center content-center flex-wrap gap-0.5
-  p-40
-  h-screen w-full`,
-  glowElement:
-  `fixed top-1/2 left-1/2 
-  w-3/4 h-3/4
-  bg-radial from-blue-300 from-10% to-white to-60%
-  -translate-1/2
-  -z-10`
-}
+    `flex justify-center items-center content-center flex-wrap gap-0.5
+    p-40
+    h-screen w-full`,
+  container:
+    `flex
+    py-10
+    h-140 w-2/3
+    outline-blue-200 outline-4 rounded-2xl`,
+  section:
+    `inline-block
+    px-10
+    h-full`,
+  statsList:
+    `flex flex-col items-start justify-between 
+    h-full 
+    text-lg font-bold`
+};
 
 export default HomePage;
