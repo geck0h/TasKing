@@ -1,5 +1,6 @@
+import StatsShowcase from './StatsShowcase';
 import { Separator } from '@base-ui/react/separator';
-import { Bar, BarChart, XAxis } from "recharts"
+import { Bar, BarChart, PieChart, Pie,  XAxis } from "recharts"
 import { 
   ChartContainer, 
   type ChartConfig, 
@@ -27,61 +28,85 @@ const chartData = [
   { day: "Sun", prevWeek: 254, bestWeek: 120 }
 ];
 
+const pairs = [
+  { stat: 'Current streak', value: 5 },
+  { stat: 'Best streak'},
+  { stat: 'Lifetime tasks complete', value: 5 },
+  { stat: 'Best task', value: 15 },
+  { stat: 'Worst task', value: 505 },
+];
+
+const pie = [
+  { name: 'Complete', value: 223 },
+  { name: 'Incomplete', value: 104 }
+];
+
 const HomePage = () => (
   <div className='flex items-center justify-center h-screen'>
     <div className={styles.container}>
-        <div className={cn(styles.section, 'w-1/3')}>
-          <div className='flex flex-col items-center justify-evenly h-1/2'>
-            <div className='w-30 h-30 bg-amber-200 rounded-full' />
-            <span className='font-bold text-3xl'>
-              geckoh
-            </span>
-          </div>
-          <Separator 
-            orientation='horizontal' 
-            className='bg-blue-100 h-0.5' 
-          />
-          <div className='pt-5 h-1/2'>
-            <ul className={styles.statsList}>
-              <li>Current streak</li>
-              <li>Best streak</li>
-              <li>Lifetime tasks complete</li>
-              <li>Best task</li>
-              <li>Worst task</li>
-            </ul>
-          </div>
+      <div className={cn(styles.section, 'w-1/3')}>
+        <div className='flex flex-col items-center justify-evenly h-1/2'>
+          <div className='w-30 h-30 bg-amber-200 rounded-full' />
+          <span className='font-bold text-3xl'>
+            Martin
+          </span>
         </div>
-        <Separator 
-          orientation='vertical' 
-          className='bg-blue-100 w-0.5' 
-        />
-        <div className={cn(styles.section, 'w-3/7')}>
-          <ChartContainer 
-            config={chartConfig}
-            className='h-full w-full'
+        <div className='pt-5 h-1/2'>
+          <StatsShowcase pairs={pairs} />
+        </div>
+      </div>
+      <Separator 
+        orientation='vertical' 
+        className='bg-blue-100 w-0.5' 
+      />
+      <div className={cn(styles.section, 'w-3/7')}>
+        <ChartContainer 
+          config={chartConfig}
+          className='h-full w-full'
+        >
+          <BarChart 
+            accessibilityLayer 
+            data={chartData}
           >
-            <BarChart 
-              accessibilityLayer 
-              data={chartData}
-            >
-              <XAxis
-                dataKey='day'
-                tickMargin={12}
-                axisLine={false}
-              />
-              <ChartLegend content={<ChartLegendContent />} />
-              <Bar dataKey='bestWeek' fill='gold' radius={2} />
-              <Bar dataKey='prevWeek' fill='skyblue' radius={2} />
-            </BarChart>
-          </ChartContainer>
+            <XAxis
+              dataKey='day'
+              tickMargin={12}
+              axisLine={false}
+            />
+            <ChartLegend content={<ChartLegendContent />} />
+            <Bar dataKey='bestWeek' fill='gold' radius={2} />
+            <Bar dataKey='prevWeek' fill='skyblue' radius={2} />
+          </BarChart>
+        </ChartContainer>
+      </div>
+      <Separator 
+        orientation='vertical' 
+        className='bg-blue-100 w-0.5' 
+      />
+      <div className={cn(styles.section, 'flex-1')}>
+        <div className='flex flex-col justify-center items-center gap-2 h-1/3 w-auto'>
+          <span className='flex items-end flex-1'>Next task:</span>
+          <span className='flex-3 font-bold text-4xl'>Brush Teeth</span>
+          {/*Make it so the font gets smaller with larger text*/}
         </div>
         <Separator 
-          orientation='vertical' 
-          className='bg-blue-100 w-0.5' 
+          orientation='horizontal' 
+          className='h-0.5 bg-blue-100' 
         />
-        <div className={cn(styles.section, 'w-auto')}>
-          here is the right side
+        <div className='h-2/3'>
+          <PieChart responsive className='h-full pt-5'>
+            <Pie
+              data={pie}
+              dataKey='value'
+              cx='50%'
+              cy='50%'
+              outerRadius='90%'
+              fill='skyblue'
+              stroke='white'
+            />
+          </PieChart>
         </div>
+      </div>
     </div>
   </div>
 );
