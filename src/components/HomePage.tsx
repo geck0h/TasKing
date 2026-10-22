@@ -84,9 +84,9 @@ const HomePage = () => (
         className='bg-blue-100 w-0.5' 
       />
       <div className={cn(styles.section, 'flex-1')}>
-        <div className='flex flex-col justify-center items-center gap-2 h-1/3 w-auto'>
-          <span className='flex items-end flex-1'>Next task:</span>
-          <span className='flex-3 font-bold text-4xl'>Brush Teeth</span>
+        <div className='flex flex-col justify-center items-center justify-items-center gap-0.5 h-1/3 w-auto'>
+          <span className='flex items-end'>Next task:</span>
+          <span className='font-bold text-4xl'>Brush Teeth</span>
           {/*Make it so the font gets smaller with larger text*/}
         </div>
         <Separator 
@@ -100,7 +100,7 @@ const HomePage = () => (
               dataKey='value'
               cx='50%'
               cy='50%'
-              outerRadius='90%'
+              outerRadius='100%'
               fill='skyblue'
               stroke='white'
             />
