@@ -10,7 +10,7 @@ const StatsShowcase = ({ pairs }: Props) => (
         className='flex items-center justify-between gap-1'
       >
         <span className='text-lg text-foreground'>{pair.stat}</span> 
-        <div className='h-0.5 flex-1 bg-blue-100' /> 
+        <div className='h-0.5 flex-1 bg-muted' /> 
         <span className='text-lg text-accent-foreground'>{pair.value ?? 0}</span>
       </div>
     ))}

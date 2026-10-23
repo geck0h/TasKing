@@ -42,7 +42,7 @@ const pie = [
 ];
 
 const HomePage = () => (
-  <div className='flex items-center justify-center h-screen'>
+  <div className='flex items-center justify-center h-screen bg-background'>
     <div className={styles.container}>
       <div className={cn(styles.section, 'w-1/3')}>
         <div className='flex flex-col items-center justify-evenly h-1/2'>
@@ -57,7 +57,7 @@ const HomePage = () => (
       </div>
       <Separator 
         orientation='vertical' 
-        className='bg-blue-100 w-0.5' 
+        className='w-0.5 bg-muted' 
       />
       <div className={cn(styles.section, 'w-3/7')}>
         <ChartContainer 
@@ -74,24 +74,24 @@ const HomePage = () => (
               axisLine={false}
             />
             <ChartLegend content={<ChartLegendContent />} />
-            <Bar dataKey='bestWeek' fill='gold' radius={2} />
-            <Bar dataKey='prevWeek' fill='skyblue' radius={2} />
+            <Bar dataKey='bestWeek' fill='var(--chart-4)' radius={2} />
+            <Bar dataKey='prevWeek' fill='var(--chart-1)' radius={2} />
           </BarChart>
         </ChartContainer>
       </div>
       <Separator 
         orientation='vertical' 
-        className='bg-blue-100 w-0.5' 
+        className='w-0.5 bg-muted' 
       />
       <div className={cn(styles.section, 'flex-1')}>
         <div className='flex flex-col justify-center items-center justify-items-center gap-0.5 h-1/3 w-auto'>
           <span className='flex items-end'>Next task:</span>
           <span className='font-bold text-4xl'>Brush Teeth</span>
-          {/*Make it so the font gets smaller with larger text*/}
+          {/*TODO: Make it so the font gets smaller with larger text*/}
         </div>
         <Separator 
           orientation='horizontal' 
-          className='h-0.5 bg-blue-100' 
+          className='h-0.5 bg-muted' 
         />
         <div className='h-2/3'>
           <PieChart responsive className='h-full pt-5'>
@@ -101,8 +101,8 @@ const HomePage = () => (
               cx='50%'
               cy='50%'
               outerRadius='100%'
-              fill='skyblue'
-              stroke='white'
+              fill='var(--chart-1)'
+              stroke='var(--card)'
             />
           </PieChart>
         </div>
@@ -112,15 +112,14 @@ const HomePage = () => (
 );
 
 const styles = {
-  page:
-    `flex justify-center items-center content-center flex-wrap gap-0.5
-    p-40
-    h-screen w-full`,
   container:
     `flex
     py-10
     h-140 w-2/3
-    outline-blue-200 outline-4 rounded-2xl`,
+    rounded-2xl
+    outline-2 outline-dashed
+    bg-card
+    text-card-foreground`,
   section:
     `inline-block
     px-10

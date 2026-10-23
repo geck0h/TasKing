@@ -23,8 +23,8 @@ const styles = {
     flex flex-col items-center justify-start gap-5
     pb-4 
     h-full w-50 
-    border-blue-200 border-10 rounded-4xl
-    bg-blue-200
+    border-card border-10 rounded-4xl
+    bg-card
     -translate-y-1/2
     overflow-y-auto
     scrollbar-none
@@ -34,9 +34,9 @@ const styles = {
     `flex justify-center items-center
     w-30 h-30 shrink-0
     rounded-4xl
-    shadow-solid shadow-blue-600 
+    shadow-solid shadow-sidebar-accent
     text-3xl font-bold font-sans
-    bg-blue-500
+    bg-sidebar-primary
     hover:shadow-solid-pressed hover:translate-y-2
     transition-[translate,box-shadow] duration-100 ease`
 }
