@@ -119,7 +119,8 @@ const styles = {
     rounded-2xl
     outline-2 outline-dashed
     bg-card
-    text-card-foreground`,
+    text-card-foreground
+    hover:scale-102 ease-out transition-[scale]`,
   section:
     `inline-block
     px-10
