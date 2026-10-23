@@ -33,7 +33,7 @@ const pairs = [
   { stat: 'Best streak'},
   { stat: 'Lifetime tasks complete', value: 5 },
   { stat: 'Best task', value: 15 },
-  { stat: 'Worst task', value: 505 },
+  { stat: 'Worst task', value: 505 }
 ];
 
 const pie = [

@@ -6,10 +6,12 @@ const SideBar = () => (
       <Link to='/home' className={styles.links}> 
         HOME
       </Link>
+      <Link to='/tasks' className={styles.links}> 
+        TASKS
+      </Link>
     </div>
   </div>
-)
-
+);
 
 const styles = {
   wrapper:
@@ -38,7 +40,7 @@ const styles = {
     text-3xl font-bold font-sans
     bg-sidebar-primary
     hover:shadow-solid-pressed hover:translate-y-2
-    transition-[translate,box-shadow] duration-100 ease`
-}
+    transition-[translate,box-shadow] duration-100 ease`,
+};
 
 export default SideBar;
