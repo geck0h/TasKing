@@ -1,31 +1,95 @@
-import { useState } from 'react';
+import { useState, type SyntheticEvent } from 'react';
 import { cn } from 'cn';
 
 const days: string[] = [
   'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
 ];
 
+const cutString = (str: string): string => {
+  const l = 15;
+  if(str.length >= l)
+    return str.slice(0, l) + '...';
+  return str;
+}
+
+interface TaskDay {
+  day: string;
+  tasks: string[];
+}
+
 const TasksPage = () => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const [taskDays, setTaskDays] = useState<TaskDay[]>([
+   { day: "Monday", tasks: [] },
+   { day: "Tuesday", tasks: [] },
+   { day: "Wednesday", tasks: [] },
+   { day: "Thursday", tasks: [] },
+   { day: "Friday", tasks: ['Morning routine', 'Eat breakfast', 'Cold showers no excuses'] },
+   { day: "Saturday", tasks: [] },
+   { day: "Sunday", tasks: [] }
+  ]);
+
+  const handleAddTask = (e: SyntheticEvent<HTMLFormElement>, day: string) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.currentTarget);
+    const task = formData.get('task') as string;
+
+    setTaskDays((prev) =>
+      prev.map((taskDay) =>
+        (taskDay.day === day)
+          ? { ...taskDay, tasks: [...taskDay.tasks, task] }
+          : taskDay
+      )
+    );
+
+    e.currentTarget.reset();
+  }
 
   return (
     <>
       <div className='flex flex-wrap justify-center items-center gap-4 h-screen'>
-        {days.map((item, idx) => (
+        {taskDays.map((item, idx) => (
           <div 
-            className={cn(style.cards, (selectedCard === idx) ? 'fixed top-1/2 left-1/2 -translate-1/2 scale-200 z-10' : 'hover:scale-105')}
-            key={item} 
-            onClick={() => setSelectedCard((selectedCard === null) ? idx : null)}
-          > ddlkadhjaoidajdnidajkd</div>))}{/*TODO: make the transition better*/}
+            className={cn(style.cards, (selectedCard === idx) ? 'fixed top-1/2 left-1/2 -translate-1/2 outline-1 outline-dashed scale-200 z-10 cursor-default' : 'hover:scale-105')}
+            key={item.day} 
+            onClick={() => setSelectedCard(idx)}
+          >
+            <h2 className='pb-4 text-2xl font-bold text-accent-foreground'>{item.day}</h2>
+            <ul className='h-70 text-lg overflow-y-auto scrollbar-none'>
+              {item.tasks.map((task) => (
+                <li 
+                  className='flex justify-between items-center py-1'
+                  key={task}
+                >
+                  <span className={cn('text-wrap', (selectedCard !== null) && 'text-xs')}>{(selectedCard == null) ? cutString(task) : task}</span>
+                  <img src='some/image.png' />
+                </li>
+              ))}
+            </ul>
+            <form onSubmit={(e) => handleAddTask(e, item.day)}>
+              <input
+                className='absolute inset-x-2.5 bottom-2.5 p-2 h-10 rounded-2xl bg-secondary text-secondary-foreground'  
+                name='task'
+                type='text'
+              > 
+              </input>
+            </form>
+          </div>))}{/*TODO: make the transition better*/}
       </div>
-      <div className={cn(style.backdropBlurElement, (selectedCard !== null) ? 'block' : '')}/>
+      <div 
+        className={cn(style.backdropBlurElement, (selectedCard !== null) ? 'block' : '')}
+        onClick={() => setSelectedCard(null)}
+      />
     </>
   )
 };
 
 const style = {
   cards: 
-    `h-100 w-60 
+    `relative
+    p-5
+    h-100 w-60 
     rounded-4xl 
     bg-card
     transition-[scale] ease-out duration-100
