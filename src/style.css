@@ -41,6 +41,9 @@
     --color-background: var(--background);
     --shadow-solid: 0 12px 0;
     --shadow-solid-pressed: 0 4px 0;
+    --spacing-sm: 4px;
+    --spacing-md: 8px;
+    --spacing-lg: 16px;
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius-lg: var(--radius);
